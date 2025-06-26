@@ -1,1 +1,61 @@
+1.El gestor de memoria que utiliza una estrategia de particiones de tamaño variable,
+luego de un tiempo de uso del sistema, la memoria queda configurada con huecos
+de: 600 bytes, 400 bytes, 1000 bytes, 2200 bytes, 1610 bytes, y 1050 bytes.
+-------------------------------------------------------------------------------------------------------------------
+a) ¿Qué bloque se seleccionará para satisfacer una solicitud de 1603 bytes
+a) 📐 Política Best-Fit
+Objetivo: Selecciona el bloque más pequeño que sea suficiente para la solicitud (mínimo desperdicio).
 
+Solicitud: 1603 bytes
+
+Análisis:
+
+Revisamos los bloques que sean ≥ 1603:
+
+2200 → ✅
+
+1610 → ✅
+
+El más pequeño que cumple es:
+✅ 1610 bytes
+-------------------------------------------------------------------------------------------------------------------
+b) Ídem utilizando el Worst-fit
+b) 🧱 Política Worst-Fit
+Objetivo: Selecciona el bloque más grande disponible (máximo desperdicio).
+
+Bloques disponibles:
+
+600, 400, 1000, 2200, 1610, 1050
+
+Bloques ≥ 1603:
+
+2200
+
+1610
+
+El más grande es:
+✅ 2200 bytes
+-------------------------------------------------------------------------------------------------------------------
+c) Suponiendo que la lista esta ordenada como aparece en el enunciado del
+problema, ¿qué bloque se seleccionará para satisfacer una solicitud de 1053
+bytes utilizando la política First-fit? Tener en cuenta que la solicitud del punto
+anterior ya fue satisfecha.
+
+c) ⏩ Política First-Fit
+Objetivo: Asigna el primer bloque suficiente que se encuentra en la lista (de izquierda a derecha).
+
+La solicitud es de 1053 bytes, y ya se asignó la solicitud de 1603 bytes del punto anterior.
+✅ Si usamos la política Best-Fit (punto a), entonces el bloque de 1610 bytes ya fue usado, y ya no está disponible.
+
+Entonces la memoria disponible es: 600, 400, 1000, 2200, 1050 (sin 1610).
+
+Recorremos en orden:
+
+600 ❌
+
+400 ❌
+
+1000 ❌
+
+2200 ✅ → ¡Es el primero que sirve!
+-------------------------------------------------------------------------------------------------------------------
