@@ -1,0 +1,112 @@
+2. Sea un sistema gestionado por particiones múltiples de tamaño variable sin compactación. En un
+instante dado, se tiene la siguiente ocupación de la memoria:
+
+| Bloque   | Tamaño | Estado  |
+| -------- | ------ | ------- |
+| P1       | 180K   | Ocupado |
+| Bloque 1 | 400K   | Libre   |
+| P2       | 100K   | Ocupado |
+| Bloque 2 | 150K   | Libre   |
+
+
+📌 Objetivo:
+Atender en orden FIFO a:
+
+P4 (120K)
+
+P5 (200K)
+
+P6 (80K)
+
+Evaluaremos qué procesos pueden cargarse según cada política y, finalmente, cuántas particiones quedan libres y de qué tamaño.
+
+🔎 Política 1: First-Fit (Primer ajuste)
+Busca el primer bloque libre que sea suficiente.
+
+👉 Carga de procesos:
+P4 (120K):
+
+Primer bloque libre (400K) → ✅ se asigna ahí.
+
+Queda: 400K − 120K = 280K libre
+
+P5 (200K):
+
+Primer bloque libre ahora es el resto del anterior: 280K → ✅ entra.
+
+Queda: 280K − 200K = 80K libre
+
+P6 (80K):
+
+Primer bloque libre restante (80K) → ✅ justo entra.
+
+| Bloque   | Estado         |
+| -------- | -------------- |
+| P1       | Ocupado        |
+| P4       | 120K           |
+| P5       | 200K           |
+| P6       | 80K            |
+| P2       | Ocupado        |
+| Bloque 2 | **150K libre** |
+
+----------------------------------------------------------------------------------------------------------------------
+🔎 Política 2: Best-Fit (Mejor ajuste)
+Busca el bloque libre más justo para cada proceso.
+
+👉 Carga de procesos:
+P4 (120K):
+
+Bloques disponibles: 400K y 150K.
+
+Mejor ajuste: 150K → entra ahí. Queda: 30K libre.
+
+P5 (200K):
+
+Queda libre: 400K → ✅ entra.
+
+Queda: 400K − 200K = 200K libre
+
+P6 (80K):
+
+Bloques disponibles: 200K (de antes) y 30K (muy chico).
+
+Mejor ajuste: 200K → entra.
+
+Queda: 120K libre
+
+| Bloque  | Estado     |
+| ------- | ---------- |
+| P1      | Ocupado    |
+| P5      | 200K       |
+| P6      | 80K        |
+| (resto) | 120K libre |
+| P2      | Ocupado    |
+| P4      | 120K       |
+| (resto) | 30K libre  |
+
+----------------------------------------------------------------------------------------------------------------------
+🔎 Política 3: Worst-Fit (Peor ajuste)
+Usa el bloque libre más grande posible.
+
+👉 Carga de procesos:
+P4 (120K):
+
+Entre 400K y 150K → peor ajuste es 400K → entra.
+
+Queda: 280K libre
+
+P5 (200K):
+
+Resto del bloque anterior: 280K → ✅ entra.
+
+Queda: 80K libre
+
+P6 (80K):
+
+Entra justo en el bloque de 80K.
+
+🟢 Resultado (Worst-Fit):
+Igual a First-Fit.
+
+🔹 Particiones libres: 1
+🔹 Tamaño libre: 150K
