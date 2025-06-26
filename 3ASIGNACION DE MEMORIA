@@ -1,0 +1,12 @@
+Consideremos un sistema de Intercambio en el que la memoria consta de las
+siguientes particiones: 10K, 4, 20, 18, 7K ,9K, 12K, 15K.
+Cuál es el espacio que se elige si se solicitan en forma sucesiva segmentos de:
+a) 12K
+b) 10K
+c) 9K
+
+| Solicitud | Primer ajuste | Mejor ajuste | Peor ajuste |
+| --------- | ------------- | ------------ | ----------- |
+| 12K       | 20K           | 12K          | 20K         |
+| 10K       | 10K           | 10K          | 20K         |
+| 9K        | 10K           | 9K           | 20K         |
