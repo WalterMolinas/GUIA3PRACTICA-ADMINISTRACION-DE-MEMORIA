@@ -1,0 +1,40 @@
+| TR                TA                  TI                     | TAM(KB)    | 
+| ----------| ---------------| -------------- | -----------  |  
+| 1             | 0                   | 5                    | 15              | 
+| 2             | 0                   | 4                    | 20              | 
+| 3             | 0                   | 10                  | 12              |
+| 4             | 1                   | 3                    | 5                |
+| 5             | 2                   | 2                    | 3                |
+| 6             | 3                   | 10                  | 70              |
+| 7             | 4                   | 5                    | 25              |
+| 8             | 5                   | 5                    | 20              |
+
+| Columna | Significado                                                             |
+| ------- | ----------------------------------------------------------------------- |
+| TR      | Número de trabajo/proceso                                               |
+| TA      | Tiempo de arribo (cuándo llega el proceso al sistema)                   |
+| TI      | Tiempo de ejecución (cuánto tiempo necesita en CPU)                     |
+| TAM     | Tamaño del proceso en KB (cuánto espacio necesita en memoria principal) |
+
+Los siguientes son los tamaños establecidos para los
+trabajos que se ejecutan normalmente en el centro de
+cómputos:
+ SISTEMA OPERATIVO 32K
+ TRABAJOS MUY PEQUEÑOS 6K
+ TRABAJOS PROMEDIOS 20K
+ TRABAJOS MUY GRANDES 70K
+a). Indique como se realizaría la asignación de memoria según un método de asignación
+MFT que usa un algoritmo FIRST-FIT. El algoritmo de planificación de CPU es FCFS
+
+
+| Tiempo | Trabajo | Tamaño | Se asigna a…                                                     | Resultado                         |
+| ------ | ------- | ------ | ---------------------------------------------------------------- | --------------------------------- |
+| 0      | TR1     | 15K    | Primera partición libre de 20K                                   | Asignado                          |
+| 0      | TR2     | 20K    | Segunda partición de 20K                                         | Asignado                          |
+| 0      | TR3     | 12K    | No hay partición libre (todas ocupadas de 20K)                   | Espera                            |
+| 1      | TR4     | 5K     | Primera partición libre de 6K                                    | Asignado                          |
+| 2      | TR5     | 3K     | Segunda partición de 6K                                          | Asignado                          |
+| 3      | TR6     | 70K    | Partición de 70K                                                 | Asignado                          |
+| 4      | TR7     | 25K    | No hay partición que lo soporte                                  | No asignado (espera)              |
+| 5      | TR8     | 20K    | TR1 o TR2 debe haber terminado (depende del tiempo de ejecución) | Posible asignación si hay espacio |
+
